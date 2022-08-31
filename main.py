@@ -8,11 +8,13 @@ from selenium.webdriver.support import  expected_conditions as EC
 driver= webdriver.Chrome();
 driver.get('http://localhost:3000')
 driver.implicitly_wait(8);
-mybtn=driver.find_element(By.ID, 'btn1')
-mybtn.click();
+try:
+    modalbtn=driver.find_element(By.ID,'modal-btn')
+    modalbtn.click()
+except:
+    print('no modal appear')
 
-WebDriverWait(driver,10).until(
-    EC.text_to_be_present_in_element((By.CLASS_NAME,'my_label'),
-    'completed!'
-))
+
+
+
 
